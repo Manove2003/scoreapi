@@ -2,6 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors=require('cors');
+const corsConfig={
+    origin:"*",
+    credential:true,
+    methods:["Get","Post"]
+}
+app.options("",cors(corsConfig))
+app.use(cors(corsConfig));
+
 
 // Load environment variables from .env file
 dotenv.config();
