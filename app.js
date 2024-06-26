@@ -23,10 +23,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/scores', require('./routes/scores'));
-app.get("/" , (req , res)=>{
-    res.json({
-        message : "Working Successss"
-    })
-})
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
