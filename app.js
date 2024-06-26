@@ -3,18 +3,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors=require('cors');
-const corsConfig={
-    origin:"*",
-    credential:true,
-    methods:["Get","Post"]
-}
-app.options("",cors(corsConfig))
-app.use(cors(corsConfig));
+
 
 
 // Load environment variables from .env file
 dotenv.config();
-
+app.use(cors())
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -29,5 +23,10 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/scores', require('./routes/scores'));
+app.get("/" , (req , res)=>{
+    res.json({
+        message : "Working Successss"
+    })
+})
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
