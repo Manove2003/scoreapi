@@ -32,7 +32,7 @@ router.post('/submit/:rollno',async (req, res) => {
 // Get top scores route
 router.get('/top', async (req, res) => {
     try {
-        const scores = await Score.find().sort({ score: -1 }).limit(1).populate('userId', 'rollno');
+        const scores = await Score.find().sort({ score: -1 }).limit(10).populate('userId', 'rollno');
         res.json(scores);
     } catch (err) {
         console.error(err.message);
