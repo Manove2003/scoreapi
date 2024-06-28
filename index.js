@@ -14,7 +14,9 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(cors());
 app.use(cors({
-    origin: 'https://ghost-shooter-game.netlify.app/'
+    origin: 'https://ghost-shooter-game.netlify.app/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow only specified methods
+    allowedHeaders: ['Content-Type', 'Authorization']
   }));
 // Connect to MongoDB using the connection string from environment variables
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
