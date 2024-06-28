@@ -9,7 +9,18 @@ const cors=require('cors');
 dotenv.config();
 const app = express();
 const allowedOrigins = ["https://ghost-shooter-game.netlify.app"];
+ 
 
+const corsOptions = {
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // This allows cookies to be sent
+  };
 const credentials = (req, res, next) => {
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
