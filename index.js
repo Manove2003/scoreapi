@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-
+const cors=require('cors');
 
 
 // Load environment variables from .env file
@@ -12,7 +12,10 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-
+app.use(cors());
+app.use(cors({
+    origin: 'http://127.0.0.1:5500'
+  }));
 // Connect to MongoDB using the connection string from environment variables
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
