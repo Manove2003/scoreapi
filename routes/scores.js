@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 const router = express.Router();
 
-router.post('/submit/:rollno', auth ,async (req, res) => {
+router.post('/submit/:rollno',async (req, res) => {
     const { rollno} = req.params;
     const { score } = req.body;
 
