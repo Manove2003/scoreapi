@@ -8,7 +8,7 @@ const cors=require('cors');
 // Load environment variables from .env file
 dotenv.config();
 const app = express();
-const allowedOrigins = ["http://localhost:5173"];
+const allowedOrigins = ["https://ghost-shooter-game.netlify.app"];
 
 const credentials = (req, res, next) => {
   const origin = req.headers.origin;
